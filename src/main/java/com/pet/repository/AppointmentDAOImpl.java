@@ -34,12 +34,12 @@ public class AppointmentDAOImpl implements AppointmentDAO {
 		return entityMan.find(Appointment.class, appId);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Integer> getAppbylist() {
 
-		Query query = entityMan.createQuery("SELECT app_id FROM pets_db.appointment_tbl");
-		@SuppressWarnings("unchecked")
-		List<Integer> list=query.getResultList();
+		Query q = entityMan.createQuery("SELECT c.appId FROM Appointment c");
+		List<Integer> list = q.getResultList();
 		return list;
 	}
 
