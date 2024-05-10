@@ -45,12 +45,12 @@ public class PetDAOImpl implements PetDAO {
 		return entityMan.find(Pet.class, petId);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Integer> getPetbylist() {
 
-		Query query = entityMan.createQuery("SELECT pet_id FROM pets_db.pet_tbl");
-		@SuppressWarnings("unchecked")
-		List<Integer> list = query.getResultList();
+		Query q = entityMan.createQuery("SELECT c.petId FROM Pet c");
+		List<Integer> list = q.getResultList();
 		return list;
 	}
 
