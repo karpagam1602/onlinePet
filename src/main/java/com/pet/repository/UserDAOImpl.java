@@ -32,12 +32,13 @@ public class UserDAOImpl implements UserDAO {
 		return entityMan.find(User.class, userId);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Integer> getUserbylist() {
-		Query query = entityMan.createQuery("SELECT  user_id FROM pets_db.user_tbl;");
-		@SuppressWarnings("unchecked")
-		List<Integer> list = query.getResultList();
+		Query q = entityMan.createQuery("SELECT c.userId FROM User c");
+		List<Integer> list = q.getResultList();
 		return list;
 	}
+
 
 }
